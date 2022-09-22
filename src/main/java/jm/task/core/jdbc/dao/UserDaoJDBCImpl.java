@@ -14,10 +14,10 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
 
     public UserDaoJDBCImpl() {
-
     }
 
     public void createUsersTable() {
+
         try (Connection connection = Util.getConnection()) {
             String sql = """
                     CREATE TABLE IF NOT EXISTS `mydbtest`.`users` (
@@ -42,7 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try (Connection connection = Util.getConnection()) {
-            String sql = "DROP TABLE IF EXISTS `mydbtest`.`users`";
+           String sql = "DROP TABLE IF EXISTS `mydbtest`.`users`";
             connection.setAutoCommit(false);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.executeUpdate();
@@ -116,7 +116,6 @@ public class UserDaoJDBCImpl implements UserDao {
                     connection.rollback();
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
